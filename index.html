@@ -1,0 +1,43 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="index.js" type="module" defer></script>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="container text-center">
+            <input type='tel' id="phone"  maxLength="16" placeholder="mobile number" 
+            autocomplete="off"/>
+            <button onclick="formatAndDisplayPhoneNumber()">Format</button>
+            <p id="formattedPhoneNumber"></p>
+
+        </div>
+
+        </div>
+        <script>
+            function formatPhoneNumber(phoneNumber) {
+              const cleaned = phoneNumber.replace(/\D/g, '');
+              const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+        
+              if (match) {
+                return `(${match[1]}) ${match[2]}-${match[3]}`;
+              }
+        
+              return phoneNumber;
+            }
+        
+            function formatAndDisplayPhoneNumber() {
+              const phoneNumber = document.getElementById('phone').value;
+              const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
+              document.getElementById('formattedPhoneNumber').textContent = formattedPhoneNumber;
+            }
+          </script>
+       
+    </body>
+</html>
